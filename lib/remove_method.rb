@@ -7,14 +7,14 @@ class RemoveMethod < Core
     @file        = file
   end
 
-  def process
+  private
+
+  def perform
     ast           = build_ast
     @modified_ast = remove_method_in_ast ast
     rebuild_ast
     generate_output
   end
-
-  private
 
   def rebuild_ast
     modified_code = Unparser.unparse @modified_ast
@@ -41,7 +41,7 @@ class RemoveMethod < Core
 
   def ast_without_target_node ast
     ast.children.map do |node|
-      map_node_with
+      map_node_with node
     end.compact
   end
 

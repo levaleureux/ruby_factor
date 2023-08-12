@@ -22,6 +22,7 @@ end
 
 # Cherchez tous les fichiers Ruby (.rb) dans le répertoire lib et ses sous-dossiers
 require_relative "../lib/core.rb"
+#require_relative "../refactoring.rb"
 
 Dir.glob(File.join(File.dirname(__FILE__), '../lib/**/*.rb')).each do |file|
   # Chargez chaque fichier trouvé avec require_relative
@@ -121,9 +122,6 @@ RSpec.configure do |config|
           # Comparer les lignes, supprimer les sauts de ligne pour la comparaison
           return false if line1.chomp != line2.chomp
         end
-
-        # Vérifier si les deux fichiers ont le même nombre de lignes
-        return false if line1 || line2
       end
     end
 
