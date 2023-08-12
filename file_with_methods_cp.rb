@@ -1,9 +1,6 @@
 # auinresa pape a totlala
 def trust_no_one
-  puts("Jane look !")
-end
-def trust_no_one_2
-  puts("Jane look !")
+  puts("Mulder look !")
 end
 
 class Xfiles
