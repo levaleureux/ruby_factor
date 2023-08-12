@@ -50,9 +50,13 @@ class RemoveMethod < Core
       @removed_method_node = node.dup # Copie le nœud supprimé
       nil # Remove the method node
     else
-      remove_method_in_ast(node) if node.is_a?(Parser::AST::Node)
-      node
+      continue_parsing node
     end
+  end
+
+  def continue_parsing node
+    remove_method_in_ast(node) if node.is_a?(Parser::AST::Node)
+    node
   end
 
 end
