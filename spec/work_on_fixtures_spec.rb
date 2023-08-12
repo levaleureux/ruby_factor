@@ -38,7 +38,7 @@ describe 'Manipulation de fichiers' do
 		original_line_count = File.readlines(@original_file).count
 		modified_line_count = File.readlines(@temp_file_path).count
 
-		compare_files(file_path1, file_path2)
+		compare_files(@temp_file_path, @res_file)
 		expect(modified_line_count).to eq(original_line_count - 1)
 	end
 

@@ -30,7 +30,7 @@ class RemoveMethod < Core
   end
 
   def remove_method_in_ast ast
-    ast.updated nil, ast_without_target_node ast
+    ast.updated nil, ast_without_target_node(ast)
   end
 
   def method_node_to_remove? node

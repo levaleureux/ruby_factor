@@ -36,9 +36,13 @@ class AddMethod < Core
         end
       end)
     else
-      add_method_to_ast(node) if node.is_a?(Parser::AST::Node)
-      node
+      continue_parsing node
     end
+  end
+
+  def continue_parsing node
+    add_method_to_ast(node) if node.is_a?(Parser::AST::Node)
+    node
   end
 end
 
