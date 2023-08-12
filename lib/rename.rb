@@ -14,7 +14,7 @@ class Rename < Core
 
   private
 
-  def perform
+  def process
     ast           = build_ast
     @modified_ast = rename_method_in_ast ast
     rebuild_ast
@@ -25,6 +25,15 @@ class Rename < Core
     code           = File.read @file
     ast, @comments = Parser::CurrentRuby.parse_with_comments code
     ast
+  end
+
+  # Convertir l'AST en code source avec les commentaires
+  #
+  def rebuild_ast
+    modified_code                = Unparser.unparse @modified_ast
+    @code_with_comments_restored = modified_code.dup
+    re_insert_comments
+    puts @code_with_comments_restored
   end
 
   def generate_output
