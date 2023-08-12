@@ -11,6 +11,22 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
+require 'simplecov'
+# spec/spec_helper.rb
+
+# Configure SimpleCov
+SimpleCov.start do
+  add_filter '/spec/' # Ignore les fichiers de spécification
+  add_filter '/coverage/'
+end
+
+# Cherchez tous les fichiers Ruby (.rb) dans le répertoire lib et ses sous-dossiers
+require_relative "../lib/core.rb"
+
+Dir.glob(File.join(File.dirname(__FILE__), '../lib/**/*.rb')).each do |file|
+  # Chargez chaque fichier trouvé avec require_relative
+  require_relative file
+end
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

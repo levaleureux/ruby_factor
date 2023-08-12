@@ -11,4 +11,6 @@ group :development, :test do
   gem 'thor'
   gem 'rspec'
 end
+gem 'simplecov', require: false
+
 
