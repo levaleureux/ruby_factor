@@ -128,4 +128,9 @@ RSpec.configure do |config|
     # Les fichiers sont identiques
     return true
   end
+
+  def puts_file file_path
+    file_content = File.read(file_path)
+    puts file_content
+  end
 end

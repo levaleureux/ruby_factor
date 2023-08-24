@@ -1,6 +1,9 @@
 require 'parser/current'
 require 'unparser'
 
+# NOTE: all refactor pattern use core
+# so the perform is always safe.
+#
 class Core
 
   def process
@@ -20,10 +23,9 @@ class Core
   # Convertir l'AST en code source avec les commentaires
   #
   def rebuild_ast
-    modified_code                = Unparser.unparse @modified_ast
+    modified_code = Unparser.unparse @modified_ast
     @code_with_comments_restored = modified_code.dup
     re_insert_comments
-    puts @code_with_comments_restored
   end
 
   # Remplacer les commentaires dans le code généré
