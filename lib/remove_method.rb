@@ -33,16 +33,16 @@ class RemoveMethod < Core
     ast.updated nil, ast_without_target_node(ast)
   end
 
-  def method_node_to_remove? node
-    node.is_a?(Parser::AST::Node) \
-      && node.type == :def \
-      && node.children[0].to_s == @method_name
-  end
-
   def ast_without_target_node ast
     ast.children.map do |node|
       map_node_with node
     end.compact
+  end
+
+  def method_node_to_remove? node
+    node.is_a?(Parser::AST::Node) \
+      && node.type == :def \
+      && node.children[0].to_s == @method_name
   end
 
   def map_node_with node
